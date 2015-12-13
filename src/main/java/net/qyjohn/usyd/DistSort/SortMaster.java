@@ -1,5 +1,8 @@
 package net.qyjohn.usyd.DistSort;
 
+import java.util.HashSet;
+import org.dom4j.*;
+
 public class SortMaster
 {
 	int totalClients = 1;
@@ -16,8 +19,11 @@ public class SortMaster
 		this.totalClients = totalClients;
 		System.out.println(this.totalClients);
 		
+		// Create MQ SortClient_To_Master
+		PullMQ pmq = new PullMQ("localhost", "SortClient_To_Master");
+		
 		// Wait for SortClient registration
-		waitClientRegistration();
+		waitClientRegistration(pmq);
 	}
 	
 	/**
@@ -26,9 +32,22 @@ public class SortMaster
 	 *
 	 */
 	  
-	public void waitClientRegistration()
+	public void waitClientRegistration(PullMQ pmq)
 	{
-		
+		HashSet<String> clients = new HashSet<String>();
+		while (clients.size() < totalClients)
+		{
+			try
+			{
+				String msg = pmq.pullMQ();
+				Element client = DocumentHelper.parseText(msg).getRootElement();
+				
+			} catch (Exception e)
+			{
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	/**

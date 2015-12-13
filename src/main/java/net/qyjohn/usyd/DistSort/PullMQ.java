@@ -51,7 +51,7 @@ public class PullMQ
 	public static void main(String[] args)
 	{
 		String msg;
-		PullMQ pj = new PullMQ("localhost", FoxParam.SIMPLE_WORKFLOW_JOB_MQ);
+		PullMQ pj = new PullMQ("localhost", "SortClient_To_Master");
 		
 		while (true)
 		{
