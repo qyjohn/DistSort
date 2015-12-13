@@ -14,12 +14,12 @@ public class App
             {
                 System.out.println( "Starting DistSort master..." );
 				int totalClients = 1;
-				if (args.length != 0)
+				if (args.length ==2)
 				{
 					try
 					{
 						// Get the number of SortClient
-						totalClients = Integer.parseInt(args[0]);	
+						totalClients = Integer.parseInt(args[1]);	
 					} catch (Exception e) {}
 				}	
 				SortMaster sm = new SortMaster(totalClients);
@@ -28,10 +28,10 @@ public class App
             {
                 System.out.println( "Starting DistSort client..." );
 				String master = "127.0.0.1";
-				if (args.length != 0)	
+				if (args.length == 2)	
 				{
 					// Command line argument is the IP address of the master
-					master = args[0];
+					master = args[1];
 				}
 				
 				SortClient sc = new SortClient(master);

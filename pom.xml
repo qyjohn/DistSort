@@ -42,7 +42,7 @@
 	<configuration>
 	   <archive>
 	     <manifest>
-		<mainClass>net.qyjohn.usyd.DistSort.SortMaster</mainClass>
+		<mainClass>net.qyjohn.usyd.DistSort.App</mainClass>
 	     </manifest>
 	   </archive>
 	</configuration>
